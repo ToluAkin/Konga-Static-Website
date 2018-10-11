@@ -10,7 +10,7 @@
 <?php
 //QUIZ ONE
 echo "1st quiz <br>";
-echo nl2br("My name is Toluwalase.\n I stay in Ibadan. \r\n I studied in Obafemi Awolowo University, Ile-Ife. \r\n I like rice and fried plantain, hot!. \r\n");
+echo nl2br("My name is Toluwalase Akintoye.\n I stay in Ibadan. \r\n I studied in Obafemi Awolowo University, Ile-Ife. \r\n I like rice and fried plantain, hot!. \r\n");
 
 
 //QUIZ TWO

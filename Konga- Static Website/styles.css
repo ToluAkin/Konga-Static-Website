@@ -177,11 +177,11 @@ vertical-align: middle;
 
 .slider img{
     height: 410px;
-    width: 810px;
+    width: 740px;
 }
 
 .flyers {
-    margin-left: 35px;
+    margin-left: -42px;
     float: left;
     display: inline;
     width: 200px;

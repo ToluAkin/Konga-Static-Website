@@ -58,6 +58,7 @@ for ($x = 100; $x <= 150; $x++) {
 echo " BETWEEN 0-50 <br>";
 
 for ($x = 0; $x <= 50; $x++) { 
+    if ($x%2==0)
     echo "The number is: $x <br>"; 
 }
 

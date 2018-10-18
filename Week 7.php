@@ -64,17 +64,13 @@ for ($x = 0; $x <= 50; $x++) {
 
 //QUIZ FIVE
 echo "5th quiz <br>";
-$name = array
-( 
-    array("Adeola", "watching movies"),
-    array("Fiyinfoluwa", "traveling"),
-    array("Yewande", "playing games")
-);
+$firstname = array("Adeola", "Fiyinfoluwa", "Yewande");
 
+$hobby = array("watching movies", "traveling", "playing games ");
 
-echo "My name is " . $name[0][0] . " and I love " . $name[0][1] .". <br>";
-echo "My name is " . $name[1][0] . " and I love " . $name[1][1] .". <br>";
-echo "My name is " . $name[2][0] . " and I love " . $name[2][1] .". <br>";
+echo "My name is " . $firstname[0] . " and I love " . $hobby[0] .". <br>";
+echo "My name is " . $firstname[1] . " and I love " . $hobby[1] .". <br>";
+echo "My name is " . $firstname[2] . " and I love " . $hobby[2] .". <br>";
 
 //QUIZ SIX
 echo "6th quiz <br>";
@@ -93,4 +89,4 @@ function productFunction($a, $b) {
 
 ?>
 </body>
-</html>
+</html>>

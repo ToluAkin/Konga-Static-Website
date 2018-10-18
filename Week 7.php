@@ -10,7 +10,7 @@
 <?php
 //QUIZ ONE
 echo "1st quiz <br>";
-echo nl2br("My name is Toluwalase Akintoye.\n I stay in Ibadan. \r\n I studied in Obafemi Awolowo University, Ile-Ife. \r\n I like rice and fried plantain, hot!. \r\n");
+echo nl2br("My name is Toluwalase.\n I stay in Ibadan. \r\n I studied in Obafemi Awolowo University, Ile-Ife. \r\n I like rice and fried plantain, hot!. \r\n");
 
 
 //QUIZ TWO
@@ -64,13 +64,17 @@ for ($x = 0; $x <= 50; $x++) {
 
 //QUIZ FIVE
 echo "5th quiz <br>";
-$firstname = array("Adeola", "Fiyinfoluwa", "Yewande");
+$name = array
+( 
+    array("Adeola", "watching movies"),
+    array("Fiyinfoluwa", "traveling"),
+    array("Yewande", "playing games")
+);
 
-$hobby = array("watching movies", "traveling", "playing games ");
 
-echo "My name is " . $firstname[0] . " and I love " . $hobby[0] .". <br>";
-echo "My name is " . $firstname[1] . " and I love " . $hobby[1] .". <br>";
-echo "My name is " . $firstname[2] . " and I love " . $hobby[2] .". <br>";
+echo "My name is " . $name[0][0] . " and I love " . $name[0][1] .". <br>";
+echo "My name is " . $name[1][0] . " and I love " . $name[1][1] .". <br>";
+echo "My name is " . $name[2][0] . " and I love " . $name[2][1] .". <br>";
 
 //QUIZ SIX
 echo "6th quiz <br>";
@@ -89,4 +93,4 @@ function productFunction($a, $b) {
 
 ?>
 </body>
-</html>>
+</html>

@@ -1,11 +1,17 @@
 <?php 
-        $name = $_POST['first_name']; 
+        $first_name = $_POST['first_name']; 
+        $last_name = $_POST['last_name'];
         $email = $_POST['email_address']; 
-        saveToFile($name, $email_address); 
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_passsword'];
+        $phone_number = $_POST['phone_number'];
+        $gender = $_POST['gender'];
+        $country = $_POST['country'];
+        saveToFile($first_name, $last_name, $email_address, $password, $confirm_password, $phone_number, $gender, $country); 
         header('Location:success.html');
-    function saveToFile($name, $email_address) {   
+    function saveToFile($first_name, $last_name, $email_address, $password, $confirm_password, $phone_number, $gender, $country) {   
         $fileHandler = fopen('record.txt', 'a');   
-        $string = $name . ',' . $email_address . "\n";   
+        $string = $first_name . ',' . $last_name . ',' . $email_address . ',' . $password . ',' . $confirm_password . ',' . $phone_number . ',' . $gender . ',' . $country . "\n";   
         fwrite($fileHandler, $string);   
         fclose($fileHandler); 
 }
@@ -20,7 +26,7 @@
     if (!$conn) {       
         die("Connection failed: " . mysqli_connect_error());  
      }   
-       $sql = "INSERT INTO users (first_name, email_address, created_at)       VALUES ('$name', '$email_address', NOW())";  
+       $sql = "INSERT INTO users (first_name, last_name, email_address, password, confirm_password, phone_number, gender, country, created_at)       VALUES ('$first_name', 'last_name', '$email_address', 'password', 'confirm_password', 'phone_number', 'gender', 'country', NOW())";  
         $result = mysqli_query($conn, $sql);
     //Check for errors   
     if (!$result) {     

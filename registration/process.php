@@ -1,11 +1,11 @@
 <?php 
-        $first_name = $_POST['first_name']; 
-        $last_name = $_POST['last_name'];
-        $email = $_POST['email_address']; 
+        $first_name = $_POST['firstname']; 
+        $last_name = $_POST['lastname'];
+        $email_address = $_POST['email_address']; 
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_passsword'];
         $phone_number = $_POST['phone_number'];
-        $gender = $_POST['gender'];
+        $gender = $_POST['Gender'];
         $country = $_POST['country'];  
         saveToFile($first_name, $last_name, $email_address, $password, $confirm_password, $phone_number, $gender, $country);
         header('Location:success.html');

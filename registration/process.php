@@ -3,10 +3,11 @@
         $last_name = $_POST['lastname'];
         $email_address = $_POST['email_address']; 
         $password = $_POST['password'];
-        $confirm_password = $_POST['confirm_passsword'];
+        $confirm_password = $_POST['confirm_password'];
         $phone_number = $_POST['phone_number'];
         $gender = $_POST['Gender'];
         $country = $_POST['country'];  
+        saveToDatabase($first_name, $last_name, $email_address, $password, $confirm_password, $phone_number, $gender, $country);
         saveToFile($first_name, $last_name, $email_address, $password, $confirm_password, $phone_number, $gender, $country);
         header('Location:success.html');
 
@@ -21,17 +22,18 @@
         $serverName = "localhost";   
         $database = "Registration";   
         $username = "root";   
-        $password = "";
+        $dbpassword = "mysql";
 
     //Open database connection   
-    $conn = mysqli_connect($serverName, $username, $password, $database);
+    $conn = mysqli_connect($serverName, $username, $dbpassword, $database);
 
     // Check that connection exists   
     if (!$conn) {       
         die("Connection failed: " . mysqli_connect_error());  
      }   
 
-       $sql = "INSERT INTO users (first_name, last_name, email_address, password, confirm_password, phone_number, gender, country, created_at)  VALUES ('$first_name', 'last_name', '$email_address', 'password', 'confirm_password', 'phone_number', 'gender', 'country', NOW())";  
+       $sql = "INSERT INTO users (first_name, last_name, email_address, password, confirm_password, phone_number, gender, country, created_at)  
+                VALUES ('$first_name', '$last_name', '$email_address', '$password', '$confirm_password', '$phone_number', '$gender', '$country', NOW())";  
         $result = mysqli_query($conn, $sql);
 
     //Check for errors   

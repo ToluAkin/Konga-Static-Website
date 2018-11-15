@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>sign-up form</title>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="stylesheet.css">
+    </head>
+    <body>
+        <p>Sign-Up Enquiry form</p>
+        <hr>
+         <div class= "bg">
+            <form method="POST" name="regForm" onsubmit="return validateForm()">
+                      <label for="first_name">* First name <br></label>
+                    <input type ="text" name = "firstname" placeholder = "First name"/>
+                    <p></p>
+                    <label for="last_name"> * Last name <br> </label> 
+                    <input type = "text" name = "lastname" placeholder = "Last name"/>
+                    <p></p>
+                    <label for="email_address">* E-mail Address<br></label> 
+                    <input type = "text" name = "email address" placeholder = "E-mail Address"/>
+                    <p></p>
+                    <label for="password">* Password <br></label> "
+                    <input type = "password" name = "psw" id = "psw" placeholder = "Password"/>
+                    <p></p>
+                    <label for="password">* Confirm Password <br></label> 
+                    <input type = "password" name = "con_password" id = "con_password" placeholder = "Confirm Password"/>
+                    <p></p>
+                    <label for="phone_number">* Phone Number <br></label>
+                    <input type = "number" name = "phone number" placeholder = "Phone Number"/>
+                    <p></p>
+                    <label for="gender">Gender<br></label>
+                    <select name="gender" id="gender">
+                        <option value="-1" selected>Choose one</option> 
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <p></p>
+                    <label for="country">Country:<br></label>
+                    <select name="country" id="country" >
+                        <option value="-1" selected>Choose one</option> 
+                        <option value="nigeria">Nigeria</option>
+                        <option value="ghana">Ghana</option>
+                        <option value="kenya" >Kenya</option>
+                    </select>
+                    <p></p>
+                    <input type="checkbox">
+                    <label for="Terms and Conditions">Accept the terms & conditions to continue</label>
+                    <p></p>
+                    <button type = "submit" class = "btn">submit</button>
+            </form>
+        </div>
+        <script src="validation.js"></script>
+    </body>
+</html>

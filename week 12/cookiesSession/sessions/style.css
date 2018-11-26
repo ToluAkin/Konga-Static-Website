@@ -1,0 +1,41 @@
+* {
+box-sizing: border-box;
+}
+.card {
+box-shadow: 0 10px 20px  rgba(0,0,0,0.2), 0 6px 6px  rgba(0,0,0,0.23);
+transition: 0s;
+width: 25%;
+display: block;
+padding: 25px 50px;
+text-align : center;
+margin-left: 37%;
+margin-top: 10%;
+}
+.card:hover {
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.container {
+padding: 2px 1px;
+}
+body {
+font-family: verdana;
+font-size: 12px;
+width: 100%;
+align-content: center;
+}
+input[type=text], input[type=password] {
+    width: 75%; 
+    padding: 12px; 
+    border: 1px solid #ccc; 
+    border-radius: 2px; 
+    margin-top: 6px; 
+    margin-bottom: 16px; 
+    resize: vertical;
+    background-color:none;
+}
+h1 {
+font-family: verdana;
+font-size: 17px;
+line-height: 20%;
+font-weight: lighter;
+}

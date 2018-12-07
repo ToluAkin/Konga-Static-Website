@@ -1,7 +1,6 @@
 <?php
     session_start();
-    
-    $_SESSION['email'] = 'toluakintoye@gmail.com';
+    include 'medium.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,12 +19,12 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">  
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="nav-link" data-value="save" href="save.html">Saved notes</a>  
+        <a class="nav-link" data-value="save" href="saved.php">Saved notes</a>  
         <a class="nav-link" data-value="add" href="add.html">Add note</a>        
         <div class="collapse navbar-collapse " id="navbarSupportedContent">     
             <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
                 <li class="nav-item">
-                <a class="nav-link" data-value="signin" href="#"><?php echo "Welcome" . " " .$_SESSION["email"]. " "; ?></a>       
+                <a class="nav-link" data-value="signin" href="#"><?php echo "Welcome" . " " .$_SESSION["username"]. " "; ?></a>       
                 </li>  
                 <li class="nav-item">
                     <a class="nav-link " data-value="logout" href="logout.php">Log out</a>    

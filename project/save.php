@@ -76,11 +76,13 @@
                 $result = mysqli_query($conn, $sql);
                 $resultCheck = mysqli_num_rows($result);
             }
-            $i = 1;
+            
+            $i=1;
+
             if ($resultCheck > 0) {
                 // output data of each row
                 while ($row = mysqli_fetch_assoc($result)) {
-                // echo  $row["id"]. ".". " " . $row["title"]. " " . $row["note"]." " . $row["created_at"]. "<br>";
+                    // echo  $row["id"]. ".". " " . $row["title"]. " " . $row["note"]." " . $row["created_at"]. "<br>";
                 echo "<tr><td>".$i."</td><td>".$row['title']."</td><td>".$row['created_at']."</td>
                     <td>"."<a class='btn btn-light' href='edit.php?id=".$row['id']."' role='button'>Edit</a>"."</td>
                     <td>"."<a class='btn btn-secondary' href='delete.php?id=".$row['id']."' role='button'>Delete</a>"."</td></tr>";
@@ -94,6 +96,7 @@
         ?>
         </tbody>
     </table>    
+    <p>Entry saved sucessfully.<a href="saved.php"> Back to notes.</a></p>
     </div>
     <br><br><br><br><br><br>
     <footer>

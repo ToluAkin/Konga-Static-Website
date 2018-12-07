@@ -19,32 +19,30 @@
                     
        if(empty($username) || empty($pswd)){
             echo "All fields are required";
-    }  
-    else{
-       $sql = "SELECT * FROM  users WHERE username = '$username' and pswd ='$pswd' LIMIT 1";
-        $result = mysqli_query($conn, $sql);
-        $resultCheck = mysqli_num_rows($result);
-    }
-    
-    if ($resultCheck > 0)  { 
-        echo $resultCheck;
-        $row = mysqli_fetch_assoc($result);
-        echo $row['username'];
-        echo $row['pswd'];
-
-        $username = $row['username'];
-        $pswd = $row['pswd'];
+        }  else{
+            $sql = "SELECT * FROM  users WHERE username = '$username' and pswd ='$pswd' LIMIT 1";
+            $result = mysqli_query($conn, $sql);
+            $resultCheck = mysqli_num_rows($result);
+        }
         
-        $_SESSION['username'] = $username;
-        $_SESSION['pswd'] = $pswd;
-        header("Location:saved.html");
-    }
-    else{
-          die("Error: " . $sql . "<br>" . mysqli_error($conn));   
-        header("Location:signin.html");
-    }
-    //Close the connection   
-    mysqli_close($conn); 
+        if ($resultCheck > 0)  { 
+            echo $resultCheck;
+            $row = mysqli_fetch_assoc($result);
+            echo $row['username'];
+            echo $row['pswd'];
+
+            $username = $row['username'];
+            $pswd = $row['pswd'];
+            
+            $_SESSION['username'] = $username;
+            $_SESSION['pswd'] = $pswd;
+            header("Location:saved.php");
+        } else{
+            die("Error: " . $sql . "<br>" . mysqli_error($conn));   
+            header("Location:signin.html");
+        }
+        //Close the connection   
+        mysqli_close($conn); 
     
     }
 ?>

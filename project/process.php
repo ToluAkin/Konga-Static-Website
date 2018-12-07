@@ -22,24 +22,24 @@
         $dbusername = "root";   
         $dbpassword = "mysql";
 
-    //Open database connection   
-    $conn = mysqli_connect($serverName, $dbusername, $dbpassword, $database);
+        //Open database connection   
+        $conn = mysqli_connect($serverName, $dbusername, $dbpassword, $database);
 
-    // Check that connection exists   
-    if (!$conn) {       
-        die("Connection failed: " . mysqli_connect_error());  
-     }   
+        // Check that connection exists   
+        if (!$conn) {       
+            die("Connection failed: " . mysqli_connect_error());  
+        }   
 
-       $sql = "INSERT INTO users (username, firstname, lastname, email, pswd, cpswd, created_at)  
-                VALUES ('$username','$firstname', '$lastname', '$email', '$pswd', '$cpswd', NOW())";  
+        $sql = "INSERT INTO users (username, firstname, lastname, email, pswd, cpswd, created_at)  
+        VALUES ('$username','$firstname', '$lastname', '$email', '$pswd', '$cpswd', NOW())";  
         $result = mysqli_query($conn, $sql);
 
-    //Check for errors   
-    if (!$result) {     
-          die("Error: " . $sql . "<br>" . mysqli_error($conn));  
+        //Check for errors   
+        if (!$result) {     
+            die("Error: " . $sql . "<br>" . mysqli_error($conn));  
         }  
 
-    //Close the connection   
-    mysqli_close($conn); 
+        //Close the connection   
+        mysqli_close($conn); 
     }
 ?>

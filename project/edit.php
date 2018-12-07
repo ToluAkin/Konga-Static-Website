@@ -1,8 +1,37 @@
 <?php
+    
     session_start();
     include 'medium.php';
-
 ?>
+
+<?php
+    $serverName = "localhost";   
+    $database = "scrapbook";   
+    $dbusername = "root";   
+    $dbpassword = "mysql";
+
+    // Create connection
+    $conn = mysqli_connect($serverName, $dbusername, $dbpassword, $database);
+
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $net= $_GET['id'];
+
+    $sql = "SELECT title, note FROM notes WHERE id=".$net;
+    $result = mysqli_query($conn, $sql);
+
+    if ($row = mysqli_fetch_assoc($result)) {
+        echo $row['id'];
+    } else {
+        echo "Error:" . mysqli_error($conn);
+    }
+
+    mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,18 +42,6 @@
     <link href="bootstrap-4.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="styles/style.css">
-    <style>
-        table {
-        border-collapse: collapse;
-        width: 100%;
-    } 
-
-        td, th {
-        text-align: left;
-        padding: 10px;
-        width:10%;
-    }
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg fixed-top ">  
@@ -33,7 +50,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="nav-link" data-value="save" href="saved.php">Saved notes</a>  
-        <a class="nav-link" data-value="add" href="add.php">Add note</a>     
+        <a class="nav-link" data-value="add" href="add.html">Add note</a>        
         <div class="collapse navbar-collapse " id="navbarSupportedContent">     
             <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
                 <li class="nav-item">
@@ -45,57 +62,20 @@
             </ul>
         </div>
     </nav>
-    <br><br><br><br>
+    <br><br><br>
     <div class="container">
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Title</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-        <?php
-            $serverName = "localhost";   
-            $database = "scrapbook";   
-            $dbusername = "root";   
-            $dbpassword = "mysql";
-
-            // Create connection
-            $conn = mysqli_connect($serverName, $dbusername, $dbpassword, $database);
-
-            // Check connection
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-
-            else{
-                $sql = "SELECT id, title, note, created_at FROM notes";
-                $result = mysqli_query($conn, $sql);
-                $resultCheck = mysqli_num_rows($result);
-            }
-            $i = 1;
-            if ($resultCheck > 0) {
-                // output data of each row
-                while ($row = mysqli_fetch_assoc($result)) {
-                // echo  $row["id"]. ".". " " . $row["title"]. " " . $row["note"]." " . $row["created_at"]. "<br>";
-                echo "<tr><td>".$i."</td><td>".$row['title']."</td><td>".$row['created_at']."</td>
-                    <td>"."<a class='btn btn-light' href='edit.php?id=".$row['id']."' role='button'>Edit</a>"."</td>
-                    <td>"."<a class='btn btn-secondary' href='delete.php?id=".$row['id']."' role='button'>Delete</a>"."</td></tr>";
-                $i++;
-                }
-            } else {
-                echo "0 results";
-            }
-
-            mysqli_close($conn);
-        ?>
-        </tbody>
-    </table>    
+        <form style="width: 100%; margin-left: 10%; " method="POST" action="replace.php">
+            <input name="title" type="text" id="title" class="form-control col-md-3" value ="<?php echo $row['title'] ?>" placeholder="Title" required="" autofocus="">
+            <input type="hidden" name="id" value="<?php echo $net; ?>">
+            <br>
+            <div class="form-group shadow-textarea">
+                <textarea class="form-control z-depth-5 col-md-9" input name="note"  id="exampleFormControlTextarea6" rows="30" placeholder="Type here..."><?php echo $row['note'] ?></textarea>
+            </div>
+            <br><br>
+            <input style="margin-left: 43%; " name="submit" type="submit" class="btn btn-lg btn-success" value="Save">
+        </form>
     </div>
-    <br><br><br><br><br><br>
+    <br>
     <footer>
         <p>CONTACT US</p>
         <ul class="list-inline">

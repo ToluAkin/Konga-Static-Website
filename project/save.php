@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">     
             <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="nav-link" data-value="signin" href="#"><?php echo "Welcome" . " " .$_SESSION["username"]. " "; ?></a>       
+                    <a class="nav-link" data-value="signin" href="#"><?php echo "Welcome" . " " .$_SESSION["email"]. " "; ?></a>       
                 </li>  
                 <li class="nav-item">
                     <a class="nav-link " data-value="logout" href="logout.php">Log out</a>    
@@ -58,6 +58,7 @@
             <tbody>
             
         <?php
+            include 'medium.php';
             $serverName = "localhost";   
             $database = "scrapbook";   
             $dbusername = "root";   
@@ -72,7 +73,7 @@
             }
 
             else{
-                $sql = "SELECT id, title, note, created_at FROM notes";
+                $sql = "SELECT id, title, note, created_at FROM notes WHERE userid = ".$_SESSION['userid'];
                 $result = mysqli_query($conn, $sql);
                 $resultCheck = mysqli_num_rows($result);
             }

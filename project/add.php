@@ -24,7 +24,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">     
             <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
                 <li class="nav-item">
-                <a class="nav-link" data-value="signin" href="#"><?php echo "Welcome" . " " .$_SESSION["username"]. " "; ?></a>       
+                <a class="nav-link" data-value="signin" href="#"><?php echo "Welcome" . " " .$_SESSION["email"]. " "; ?></a>       
                 </li>  
                 <li class="nav-item">
                     <a class="nav-link " data-value="logout" href="logout.php">Log out</a>    

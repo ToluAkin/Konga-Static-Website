@@ -7,7 +7,7 @@
     $cpswd = $_POST['cpswd']; 
     saveToDatabase($username, $firstname, $lastname, $email, $pswd, $cpswd);
     saveToFile($username, $firstname, $lastname, $email, $pswd, $cpswd);
-    header('Location:signin.html');
+    header('Location:signin.php');
 
     function saveToFile($username, $firstname, $lastname, $email, $pswd, $cpswd) {   
         $fileHandler = fopen('record.txt', 'a');   

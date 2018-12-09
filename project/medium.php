@@ -28,17 +28,23 @@
         if ($resultCheck > 0)  { 
             echo $resultCheck;
             $row = mysqli_fetch_assoc($result);
+            echo $row['id'];
             echo $row['username'];
+            echo $row['email'];
             echo $row['pswd'];
 
+            $id = $row['id'];
             $username = $row['username'];
+            $email = $row['email'];
             $pswd = $row['pswd'];
             
+            $_SESSION['userid'] = $id;
             $_SESSION['username'] = $username;
+            $_SESSION['email'] = $email;
             $_SESSION['pswd'] = $pswd;
             header("Location:saved.php");
         } else{
-            die("Error: " . $sql . "<br>" . mysqli_error($conn));   
+            die("Error: User does not exist " . $sql . "<br>" . mysqli_error($conn));   
             header("Location:signin.html");
         }
         //Close the connection   

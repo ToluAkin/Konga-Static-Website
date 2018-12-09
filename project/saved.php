@@ -1,7 +1,6 @@
 <?php
     session_start();
     include 'medium.php';
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,7 +36,7 @@
         <div class="collapse navbar-collapse " id="navbarSupportedContent">     
             <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="nav-link" data-value="signin" href="#"><?php echo "Welcome" . " " .$_SESSION["username"]. " "; ?></a>       
+                    <a class="nav-link" data-value="signin" href="#"><?php echo "Welcome" . " " .$_SESSION['email']. " "; ?></a>       
                 </li>  
                 <li class="nav-item">
                     <a class="nav-link " data-value="logout" href="logout.php">Log out</a>    
@@ -69,10 +68,8 @@
             // Check connection
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
-            }
-
-            else{
-                $sql = "SELECT id, title, note, created_at FROM notes";
+            } else{
+                $sql = "SELECT id, title, note, created_at FROM notes WHERE userid = ".$_SESSION['userid'];
                 $result = mysqli_query($conn, $sql);
                 $resultCheck = mysqli_num_rows($result);
             }
@@ -87,7 +84,7 @@
                 $i++;
                 }
             } else {
-                echo "0 results";
+                echo "<p>Start using Green Scrapbook by <b>adding a note</b>.</p>";
             }
 
             mysqli_close($conn);

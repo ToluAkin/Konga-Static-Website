@@ -1,37 +1,3 @@
-<?php
-    
-    session_start();
-    include 'medium.php';
-?>
-
-<?php
-    $serverName = "localhost";   
-    $database = "scrapbook";   
-    $dbusername = "root";   
-    $dbpassword = "mysql";
-
-    // Create connection
-    $conn = mysqli_connect($serverName, $dbusername, $dbpassword, $database);
-
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    $net= $_GET['id'];
-
-    $sql = "SELECT title, note FROM notes WHERE id=".$net;
-    $result = mysqli_query($conn, $sql);
-
-    if ($row = mysqli_fetch_assoc($result)) {
-        echo $row['id'];
-    } else {
-        echo "Error:" . mysqli_error($conn);
-    }
-
-    mysqli_close($conn);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,32 +15,29 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">  
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="nav-link" data-value="save" href="saved.php">Saved notes</a>  
-        <a class="nav-link" data-value="add" href="add.html">Add note</a>        
         <div class="collapse navbar-collapse " id="navbarSupportedContent">     
             <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
                 <li class="nav-item">
-                    <a class="nav-link" data-value="signin" href="#"><?php echo "Welcome" . " " .$_SESSION["email"]. " "; ?></a>       
+                    <a class="nav-link" data-value="signup" href="signup.html">Sign up</a>        
                 </li>  
                 <li class="nav-item">
-                    <a class="nav-link " data-value="logout" href="logout.php">Log out</a>    
+                    <a class="nav-link" data-value="login" href="signin.php">Log in</a>    
                 </li>
             </ul>
         </div>
     </nav>
-    <br><br><br>
-    <div class="container">
-        <form style="width: 100%; margin-left: 10%; " method="POST" action="replace.php">
-            <input name="title" type="text" id="title" class="form-control col-md-3" value ="<?php echo $row['title'] ?>" placeholder="Title" required="" autofocus="">
-            <input type="hidden" name="id" value="<?php echo $net; ?>">
-            <br>
-            <div class="form-group shadow-textarea">
-                <textarea class="form-control z-depth-5 col-md-9" input name="note"  id="exampleFormControlTextarea6" rows="30" placeholder="Type here..."><?php echo $row['note'] ?></textarea>
-            </div>
-            <br><br>
-            <input style="margin-left: 43%; " name="submit" type="submit" class="btn btn-lg btn-success" value="Save">
-        </form>
-    </div>
+    <br><br><br><br><br>
+        <div class="container">
+            <form method="POST" action="medium.php">
+                <p class="lead">Login to your account</p>
+                <br><br>
+                <input name="username" type="text" id="username" class="form-control" placeholder="Username" required="" autofocus="">
+                <br>
+                <input name="pswd" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                <br><br>
+                <input name="submit" type="submit" class="btn btn-lg btn-success btn-block" value="Submit">
+            </form>
+       </div>
     <br>
     <footer>
         <p>CONTACT US</p>
